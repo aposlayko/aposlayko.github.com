@@ -1,0 +1,57 @@
+body {
+    font: 12pt sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("texture.gif");
+}
+#maket {
+    margin: 50px auto;
+    padding: 10px;
+    background-color: #fff;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;    /*for old firefox */
+    -webkit-border-radius: 10px;   /*for old Safari & Chrome */
+
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 10px 10px 20px rgba(0,0,0,0.7);
+    -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,0.7);
+}
+#header {
+    height: 30px;
+}
+#header a {
+    margin-right: 20px;
+}
+#left {
+    width: 50%;
+    float: left;
+}
+#text {
+    line-height: 1.5;
+}
+#right {
+    width: auto;
+    margin-left: 51%;
+}
+#pic img {
+    margin: 3px;
+}
+#footer {
+    clear: both;
+}
+@media (max-width: 1699px) and (min-width: 1200px) {   /*for screens of different widths*/
+    #maket {
+        width: 1300px;
+    }
+}
+@media (max-width: 1199px) {
+    #maket {
+        width: 960px;
+    }
+}
+@media (min-width: 1700px) {
+    #maket {
+        width: 1750px;
+    }
+}
