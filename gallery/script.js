@@ -286,7 +286,7 @@ function afterLoad() {
 //    //Вторая не существует
 //    var img2 = new Img('http://d36xtkk24g8jdx.cloudfront.net/vasia.jpg');
     var gal = new Gallery();
-    gal.autoinit();
+    //gal.autoinit();
 
 
 
