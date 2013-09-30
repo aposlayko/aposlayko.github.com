@@ -158,52 +158,81 @@ function removeClass(node, className) {
     }
 }
 
+function bind(domNode, eventName, handler) {
+    //обертка для переданной ф-ции, которая добавляет в контекст вызова ф-ции кроссбраузерное событие
+    var handlerWrapper = function(event) {
+        event = event || window.event;  //нормализация
+        if (!event.taget && event.srcElement) {
+            event.taget = event.srcElement;
+        }
+        return handler.call(domNode, event);
+    };
+
+    //кроссбраузерное навешивание события
+    if (domNode.addEventListener) {
+        domNode.addEventListener(eventName, handlerWrapper, false);
+    } else if (domNode.attachEvent) {
+        domNode.attachEvent('on' + eventName, handlerWrapper);
+    }
+    //возвращает ссылку на обертку ф-ции, которую надо хранить
+    //если хочешь потом снять обработчик
+    return handlerWrapper;
+}
 
 
 function afterLoad() {
 
-    var hrefArr = ['img/fire/img1.jpg',
-                   'img/fire/img2.jpg',
-                   'img/fire/img3.jpg',
-                   'img/fire/img4.jpg',
-                   'img/fire/img5.jpg',
-                   'img/fire/img6.jpg',
-                   'img/fire/img7.jpg'];
-
-    function Gallery() {
-        var images = [],
+    function Gallery(galleryName) {
+        var largeImages = [],
+            smallImages = [],
             numberOfGallery,
-            path = 'img/fire/';
+            largeImgPath = 'img/' + galleryName + '/large/',
+            smallImgPath = 'img/' + galleryName + '/small/';
 
         this.autoinit = function() {
-            var i = 1,
-                tempImg;
+            var firstImgIndex = 1, //индекс с которого начинается нумерация картинок (img1, img1...)
+                deltaImg = 5, //сколько картинок за раз обрабатывать
+                stopSearch = false;
 
-            while(true) {
-                tempImg = new Img(path + 'img' + i + '.jpg');
-                if(tempImg.isInit()){
-                    images.push(tempImg);
-                    i++;
-                } else {
-                    alert('somthig wrong!');
-                    break;
+            //больше трех параметров - временная мера
+            function fillArray(currentIndex, delta, path, container) {
+                var max = currentIndex + delta,
+                    tempImg;
+
+                while(currentIndex < max) {
+                    tempImg = new Img(path + 'img' + currentIndex + '.jpg');
+                    container.push(tempImg);
+                    currentIndex++;
+                    console.log(currentIndex);
                 }
+
+                function isNotFound() {
+                    var i = container.length;
+                    while(i--) {
+                        if(!container[i].resultInit) {
+                            stopSearch = true;
+                            container.splice(i, 1);
+                        }
+                    }
+                }
+
+                setTimeout(function(){
+                    isNotFound();
+                    console.log(stopSearch);
+                    console.log(container);
+                    if(!stopSearch) {
+                        fillArray(currentIndex, delta, path, container);
+                    }
+                }, 200); //не меньше 200мс, чтоб успели отработать onerror
             }
+            fillArray(firstImgIndex, deltaImg, largeImgPath, largeImages);
+            fillArray(firstImgIndex, deltaImg, smallImgPath, smallImages);
 
             Gallery.prototype.countGaleries++;
             numberOfGallery = this.countGaleries;
         };
 
-        this.init = function(hrefArr) {
-            //сюда зафигачить обработчики событий (кроссбраузерные)
-            var length = hrefArr.length, i;
-            for(i = 0; i < length; i++) {
-                images.push(new Img(hrefArr[i]));
-            }
-            Gallery.prototype.countGaleries++;
-            numberOfGallery = this.countGaleries;
-        };
-
+        //отбражени галереи
         this.render = function(outerNode) {
             var wrap = document.createElement('div'),
                 bigImgDiv, preview, ul;
@@ -214,7 +243,11 @@ function afterLoad() {
             if(outerNode.nodeType ===1/* && typeof indexOfGallery === "string"*/) {
                 bigImgDiv = document.createElement('div');
                 addClass(bigImgDiv, 'big-img');
-                bigImgDiv.appendChild(images[0].get());
+                for(var i = 0; i < largeImages.length; i++) {
+                    bigImgDiv.appendChild(largeImages[i].image());
+                }
+
+//                bigImgDiv.appendChild(largeImages[0].get());
 
                 preview = document.createElement('div');
                 addClass(preview, 'preview');
@@ -237,21 +270,23 @@ function afterLoad() {
 
     function Img(src) {
         var imgElement = document.createElement('img'),
-            resultInit = true;
+            _this = this;
+        this.resultInit = true;
+        this.path; //не забудь удалить
 
         function init(src) {
-            imgElement.onerror = function(){
-                resultInit = false;
-                //console.log(isInit());
-            };
+            bind(imgElement, 'error', function(){
+                _this.resultInit = false;
+            });
             imgElement.alt = 'img';
             imgElement.src = src;
+            _this.path = src; //не забудь удалить
         }
         init(src);
 
         //testing function
         this.isInit = function() {
-            return resultInit;
+            return self.resultInit;
         };
 
         Img.prototype.render = function(outerNode) {
@@ -276,18 +311,7 @@ function afterLoad() {
         return this;
     }
 
-
-//    var gall = new Gallery();
-//    gall.autoinit();
-
-    //Первая картинка существует
-//    var img = new Img('http://d36xtkk24g8jdx.cloudfront.net/bluebar/92a81f2/images/homepage/screenshot1.jpg');
-//    img.render(document.body);
-//    //Вторая не существует
-//    var img2 = new Img('http://d36xtkk24g8jdx.cloudfront.net/vasia.jpg');
-    var gal = new Gallery();
-    //gal.autoinit();
-
-
-
+    var gal = new Gallery('fire');
+    gal.autoinit();
+    gal.render(document.body);
 }
