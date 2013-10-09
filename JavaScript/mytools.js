@@ -10,6 +10,19 @@ function isObject (obj) {
     return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
+//проверка на массивоподобность
+//Для того чтоб узнать возможен ли проход в цикле для объекта, достаточно узнать есть ли у него длина
+function isIterable(obj) {
+    //условие с функцией из-за того, что в Хроме у функций есть свойство length
+    return typeof obj !== 'function' && 'length' in obj;
+}
+
+//getType универсальная функция для определения типа
+//она страхует даже если напишут
+//var num = new Number(1); //typeof в этом случае вернет Object
+function getType(obj) {
+    return Object.prototype.toString.call(obj);
+}
 
 
 /*
@@ -322,8 +335,155 @@ function stopPropagation(event) {
 }
 
 
+//ПРОВЕРКА ЗАГРУЗКИ ДОКУМЕНТА
+/*bindReady кроссбраузерная реализация проверки загрузки документа
+param1: [function] - ф-ция, которая должна отработать после загрузки ДОМ
+return: void
+использует функции: - 
+*/
+function bindReady(handler){
+
+    var called = false;
+
+    function ready() {
+        if (called) return;
+        called = true;
+        handler()
+    }
+
+    function tryScroll(){
+        if (called) return;
+        if (!document.body) return;
+        try {
+            document.documentElement.doScroll("left");
+            ready()
+        } catch(e) {
+            setTimeout(tryScroll, 0)
+        }
+    }
+
+    if ( document.addEventListener ) {
+        document.addEventListener( "DOMContentLoaded", function(){
+            ready();
+        }, false );
+    } else if ( document.attachEvent ) {
+
+        if ( document.documentElement.doScroll && window == window.top ) {
+
+            tryScroll();
+        }
+        
+        document.attachEvent("onreadystatechange", function(){
+
+            if ( document.readyState === "complete" ) {
+                ready()
+            }
+        });
+    }
+    
+    if (window.addEventListener)
+        window.addEventListener('load', ready, false);
+    else if (window.attachEvent)
+        window.attachEvent('onload', ready);
+    /*  else  // для совсем уж древних браузеров. Внимание! возможен конфликт с другими обработчиками onload
+     window.onload=ready
+     */
+}
+
+
+
+/*
+Нижеприведенный код реализует упрощенное отслеживание загрузки документа и
+вызывает после этого функцию afterLoad()
+использует функции: afterLoad()
+*/
+document.onreadystatechange = function() {
+    var self = this;
+    if (this.readyState == "complete" || this.readyState == "loaded") {
+        setTimeout(function() { self.onload() }, 0);// сохранить "this" для onload
+    }
+};
+
+document.onload = document.onerror = function() {
+    if (!this.executed) { // выполнится только один раз
+        this.executed = true;
+        afterLoad();
+    }
+};
+
+
+
+//реализация bind ручками, возвращает новую функцию, которая вызывает функцию func в контексте context
+//param1: [function]
+//param2: [object | null | undefined]
+// return: [function]
+function bindContext(func, context) {
+    //возврат новой функции
+    return function() {
+        //apply запускает ф-цию и задает значение this внутри функции.
+        // Если context - null или undefined, то это будет глобальный объект.
+        // arguments массив аргументов, с которыми будет вызвана функция, или null/undefined для вызова без аргументов.
+        return func.apply(context, arguments);
+    }
+}
 
 
 
 
+//asyncRequest - отправлет асинхронный запрос на сервер(targetPage) методом POST или GET и передает параметры paramObj в виде хэш-таблицы
+//param1: [string] ('post'|'get без учета регистра')
+//param2: [string] - url серверного скрипта
+//param3: [object] - наборы параметров
+// return: void
+//использует функции: -
+function asyncRequest(requestType, targetPage, paramObj) {
+    function getXmlHttp() {
+        var xmlhttp;
+        try {
+            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (E) {
+                xmlhttp = false;
+            }
+        }
+        if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+            xmlhttp = new XMLHttpRequest();
+        }
+        return xmlhttp;
+    }
 
+    var xmlhttp = getXmlHttp(),
+        params = '';
+    requestType = requestType.toUpperCase();
+    for(var key in paramObj) {
+        var val = paramObj[key];
+        params += key + '=' + encodeURIComponent(val) + '&';
+    }
+    params = params.slice(0, -1);
+
+    if(requestType === 'POST'){
+        xmlhttp.open('POST', targetPage, true);
+    }else if(requestType === 'GET'){
+        xmlhttp.open('GET', targetPage + '?' + params, true);
+    }else{
+        console.log('Wrong request type!');
+        return;
+    }
+
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 200) {
+                document.getElementById('answer').innerHTML = xmlhttp.responseText;
+            }
+        }
+    };
+
+    if(requestType === 'POST'){
+        xmlhttp.send(params);
+    }else{
+        xmlhttp.send(null);
+    }
+}
