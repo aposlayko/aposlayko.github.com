@@ -309,6 +309,34 @@ clicker = bind(document.docmentNode, 'click', function (event) {
 */
 
 
+//fixEvent - нормализация объекта события
+function fixEvent(e) {
+    var html = document.documentElement,
+        body = document.body;
+
+    e = e || window.event;
+
+    //add standart properties: target, pageX/pageY, which
+    if (!e.target) e.target = e.srcElement;
+
+    if (e.pageX == null && e.clientX != null ) { // если нет pageX..
+
+
+        e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
+        e.pageX -= html.clientLeft || 0;
+
+        e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
+        e.pageY -= html.clientTop || 0;
+    }
+
+    if (!e.which && e.button) {
+        e.which = e.button & 1 ? 1 : ( e.button & 2 ? 3 : ( e.button & 4 ? 2 : 0 ) )
+    }
+
+    return e;
+}
+
+
 
 //preventDefault отменяет действия события по умолчанию, 
 //например для клика по ссылке это переход на указанный ресурс
@@ -485,5 +513,81 @@ function asyncRequest(requestType, targetPage, paramObj) {
         xmlhttp.send(params);
     }else{
         xmlhttp.send(null);
+    }
+}
+
+/*
+function extend(Child, Parent) {
+    var F = function() { }
+    F.prototype = Parent.prototype
+    Child.prototype = new F()
+    Child.prototype.constructor = Child
+    Child.superclass = Parent.prototype
+}
+*/
+
+//getCoords - вычисляет координаты elem от верхнего и левого края страницы
+//param1: [DOMElem]
+//return: [Object] {top: [Number], left: Number}
+function getCoords(elem) {
+    var box = elem.getBoundingClientRect(),
+        body = document.body,
+        docElem = document.documentElement,
+    //прокрутка страницы
+        scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop,
+        scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft,
+    //в IE документ может быть смещен относительно левого верхнего угла
+        clientTop = docElem.clientTop || body.clientTop || 0,
+        clientLeft = docElem.clientLeft || body.clientLeft || 0,
+    //координаты + прокрутка - смещение
+        top  = box.top +  scrollTop - clientTop,
+        left = box.left + scrollLeft - clientLeft;
+
+    return { top: Math.round(top), left: Math.round(left) };
+}
+
+
+//opasity - анимация растворения или проявления элемента
+//param1: [DOMElem]
+//param2: [Object] {start: [Number], end: [Number], time: [Number]}
+//        start - начальное значение прозрачности (например 70 или 0,7)
+//        end - конечно значение прозрачности
+//        time - продолжительность анимации (милисекунды)
+function opasity(element, param_obj) {
+    if(param_obj.start > 1 && param_obj.end > 1) {
+        param_obj.start /= 100;
+        param_obj.end /= 100;
+    }
+    var appear_disappear = (param_obj.end > param_obj.start),
+        curent_opasity = param_obj.start,
+        delta_opasity = 0.01,
+        delta_time = Math.abs(Math.round(param_obj.time / ((param_obj.end - param_obj.start) / delta_opasity))),
+        timer_handler;
+
+    element.style.opacity = param_obj.start;
+    element.style.filter='alpha(opacity='+param_obj.start*100+')';
+    timer_handler = setInterval(function() {
+
+        curent_opasity = appear_disappear ? curent_opasity + delta_opasity : curent_opasity - delta_opasity;
+        element.style.opacity = curent_opasity;
+        element.style.filter='alpha(opacity='+curent_opasity*100+')';
+
+        if(appear_disappear) {
+            if(curent_opasity >= param_obj.end) {
+                clearInterval(timer_handler);
+            }
+        } else {
+            if(curent_opasity <= param_obj.end) {
+                clearInterval(timer_handler);
+            }
+        }
+    }, delta_time);
+}
+
+
+//log - сокращенная функция вывода в консоль
+function log(arg) {
+    if(window.console && window.console.log) {
+        window.console.log.apply(console, arguments);
     }
 }
