@@ -1,0 +1,35 @@
+table{
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    font-size: 18px;
+}
+fieldset{
+    display: inline-block;
+    border-color:#33ccff;
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 15px;
+    font-size: 22px;
+}
+#name{
+    width: 150px;
+}
+#age{
+    width: 100px;
+    text-align: center;
+}
+thead{
+    color: gray;
+    border-bottom: 2px gray solid;
+}
+#name, #age{
+    cursor: pointer;
+}
+#name:hover, #age:hover{
+    color: #33ccff;
+}
+tbody>tr{
+    border-top: 1px gray solid;
+}
+tbody>tr>td:nth-child(2){
+    text-align: center; //Центрируем текст в колонке возраст
+}
