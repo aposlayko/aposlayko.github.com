@@ -1,0 +1,426 @@
+/* For portrait layouts only */
+@media only screen and (min-width: 481px) and (max-width: 770px) and (orientation:portrait) {
+
+    #home h4 {
+        right: 10px;
+        bottom: 10px;
+    }
+
+    #nav-menu {
+        display: none;
+    }
+
+    .corner-title {
+        width: 50%;
+        height: 90px;
+    }
+    .triangel {
+        /*display: none;*/
+    }
+
+    #left-menu ul {
+        padding: 75px 0 0 0;
+    }
+    #left-menu li {
+        margin-top: 17px;
+    }
+
+
+
+    /* Home */
+    .logo {
+        padding-top: 60px;
+    }
+    #home h1 {
+        font: 40px Raleway-Light;
+    }
+
+
+
+
+    /* Portfolio */
+    .prt-menu {
+        padding: 15px 7px 0 0;
+    }
+    .prt-menu h1 {
+        font: 28px Raleway-Bold;
+    }
+    .corner-title h1 {
+        padding: 20px 32px 5px 0;
+    }
+    .prt-back-next {
+        margin-top: 15px;
+    }
+    .prt-menu h1 {
+        font: 20px Raleway-Bold
+    }
+
+
+
+
+    /* Post example */
+    .right-side {
+        width: 370px;
+    }
+    .right-side h1 {
+        padding: 70px 45px 24px 20px;
+    }
+    .right-side p {
+        padding: 0 45px 17px 20px;
+    }
+    .post-img {
+        padding: 10px 45px 20px 20px
+    }
+    .right-side .close {
+        right: 20px;
+    }
+
+
+
+
+    /* Services */
+    .serv-content {
+        padding: 100px 5px 0 5px;
+    }
+    .serv-content>div {
+        display: block;
+        width: auto;
+        border-right: none;
+        border-bottom: 1px solid #FFFFFF;
+        margin-bottom: 15px;
+    }
+    .serv-content>div>img {
+        width: 40px;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+        vertical-align: middle;
+    }
+    #services .serv-content>div:last-child {
+        border-right: none;
+    }
+    .serv-content>div>* {
+        padding: 0 5px 10px 5px;
+    }
+    .serv-content h1 {
+        display: inline;
+        padding-bottom: 3px;
+        vertical-align: middle;
+    }
+    #services .btn {
+        margin-top: 20px;
+        height: 55px;
+    }
+
+
+
+    /* About me */
+    .about-me-content {
+        padding: 100px 0 0 20px;
+    }
+
+    /* Contacts */
+    #contact .corner-title {
+        height: 220px;
+    }
+    #contact .title-content {
+        padding-top: 8px;
+    }
+    #contact form {
+        padding: 240px 3px 0 20px;
+        width: 440px;
+    }
+    #contact form input[type='text'] {
+        margin-bottom: 10px;
+    }
+    #contact form textarea {
+        height: 60px;
+    }
+    #contact .btn {
+        height: 45px;
+        margin-top: 10px;
+    }
+}
+
+
+
+
+/*------------------------------------------------------*/
+/*------------------------------------------------------*/
+
+/* For landscape layouts only */
+@media only screen and (min-width: 481px) and (max-width: 770px) and (orientation:landscape) {
+    #home h4 {
+        display: none;
+    }
+    #nav-menu {
+        display: none;
+    }
+    .triangel {
+        display: none;
+    }
+    #menu-btn{
+        left: 5px;
+        top: 5px;
+    }
+
+
+
+    .corner-title {
+        position: absolute;
+        width: 50%;
+        height: auto;
+    }
+    .corner-title h1 {
+        font: 24px Raleway-Bold;
+        text-transform: uppercase;
+        padding: 11px 32px 5px 0;
+    }
+    .corner-title .title-content {
+        padding: 0 32px 3px 32px;
+        font: 14px Raleway-Regular;
+    }
+
+
+    /* Left menu */
+    #left-menu {
+        width: 100%;
+        text-align: center;
+    }
+    .left-menu-wrap {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    #left-menu ul {
+        padding: 50px 0 0 0;
+    }
+    #left-menu li {
+        margin-top: 2px;
+        padding: 2px 18px;
+    }
+    #left-menu hr {
+        margin: 5px 0;
+    }
+    .left-menu-wrap .social {
+        margin-top: 10px;
+    }
+    #left-menu .close {
+        top: 18px;
+        right: 18px;
+    }
+    #left-menu.closed {
+        left: -770px;
+    }
+    .social h3 {
+        margin-bottom: 3px;
+    }
+    .left-menu-wrap .social {
+        margin-top: 0;
+    }
+
+
+
+
+    /* Home */
+    #home h1 {
+        font: 20px Raleway-Light;
+        padding-top: 10px;
+    }
+    .logo{
+        padding-top: 10px;
+    }
+    .logo img {
+        width: 35%;
+    }
+    #home .btn {
+        height:  35px;
+        margin-top: 10px;
+    }
+
+
+
+    /* Portfolio */
+    .tooltip h1 {
+        font-size: 18px;
+        padding: 5px;
+    }
+    .tooltip p {
+        font-size: 12px;
+        padding: 5px;
+    }
+    .prt-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 130px;
+        height: 140px;
+        padding: 5px 5px 0 0;
+        background: #00E4FF;
+        z-index: 51;
+    }
+    .prt-menu h1 {
+        font: 18px Raleway-Bold;
+        padding-bottom: 5px;
+    }
+    .prt-back-next {
+        margin-top: 20px;
+    }
+
+
+
+
+
+    /* Portfolio Post Example */
+    .right-side {
+        width: 70%;
+    }
+    .right-side h1 {
+        font: 18px Raleway-Regular;
+        padding: 20px 3px 3px 3px;
+        text-align: center;
+    }
+    .right-side p {
+        font: 12px Raleway-Regular;
+        line-height: normal;
+        padding: 5px;
+    }
+    .right-side .close {
+        right: 12px;
+        top: 12px;
+    }
+    .right-side hr {
+        margin: 0 5px;
+    }
+    .post-img {
+        padding: 3px 5px;
+        text-align: center;
+    }
+    .post-img>div {
+        margin: 0 3px 3px 0;
+    }
+    .right-side .social {
+        text-align: center;
+        padding: 7px 0 0 0;
+    }
+
+
+
+    /* Services */
+    .serv-content {
+        padding: 52px 3px 0 3px;
+    }
+    .serv-content>div {
+        display: block;
+        width: auto;
+        border-right: none;
+        border-bottom: 1px solid #FFFFFF;
+        vertical-align: top;
+        margin-bottom: 5px;
+    }
+    .serv-content>div>img {
+        width: 26px;
+        padding-bottom: 4px;
+        vertical-align: middle;
+    }
+    #services .serv-content>div:last-child {
+        border-right: none;
+    }
+    .serv-content>div>* {
+        padding: 0 5px;
+    }
+    .serv-content h1 {
+        display: inline;
+        font: 20px Raleway-Regular;
+        padding-bottom: 3px;
+        vertical-align: middle;
+    }
+    .serv-content p {
+        font: 13px Raleway-Regular;
+    }
+    #services .btn {
+        margin-top: 5px;
+        height: 32px;
+        font: 16px Raleway-Medium;
+    }
+
+
+
+
+    /* About me */
+    .about-me-content {
+        width: 100%;
+        padding: 45px 5px 0 5px;
+    }
+    .about-me-content h1 {
+        font: 20px Raleway-Regular;
+        margin-bottom: 4px;
+    }
+    .about-me-content p {
+        margin-bottom: 4px;
+        font: 12px Raleway-Regular;
+    }
+    .skills {
+        padding: 5px 5px 8px 5px;
+        font: 12px Raleway-Regular;
+    }
+    .graphic {
+        height: 21px;
+        width: 98%;
+    }
+    #about-me .graphic {
+        margin-bottom: 2px;
+    }
+    .graphic .graphic-text, .graphic .fill-percent{
+        font: 11px Raleway-Regular;
+        color: #FFFFFF;
+    }
+    .graphic .graphic-text {
+        top: 6px;
+        left: 9px;
+    }
+    .graphic .fill-percent {
+        top: 6px;
+        right: 14px;
+    }
+    #about-me .btn {
+        height: 26px;
+        margin-top: 3px;
+    }
+
+
+
+    /* Content */
+    #contact .corner-title h1 {
+        padding: 2px 60px 5px 0;
+        font: 18px Raleway-Bold
+
+    }
+    #contact .title-content {
+        padding-top: 0;
+    }
+    #contact .title-content>div {
+        padding: 0 30px 3px 0;
+    }
+    #contact form {
+        padding: 150px 3px 0 3px;
+        width: 100%;
+    }
+    #contact form p {
+        margin-bottom: 4px;
+    }
+    #contact form input[type='text'] {
+        display: inline-block;
+        width: 31%;
+        height: 25px;
+        padding-left: 3px;
+        margin-bottom: 8px;
+    }
+    #contact form textarea {
+        height: 45px;
+        padding: 3px 0 0 3px;
+    }
+    #contact .btn {
+        height: 30px;
+        font: 16px Raleway-Medium;
+        margin-top: 5px;
+    }
+}

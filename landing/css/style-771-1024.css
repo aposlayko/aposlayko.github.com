@@ -1,0 +1,132 @@
+/* For portrait layouts only */
+@media only screen and (min-width: 770px) and (max-width: 1024px) and (orientation:portrait) {
+    #nav-menu {
+        right: 20px;
+    }
+
+    .corner-title {
+        width: 260px;
+    }
+    .corner-title h1 {
+        padding: 40px 32px 0 0;
+    }
+
+    /* Portfolio */
+    .prt-menu h1 {
+        font: 30px Raleway-Bold;
+    }
+
+
+
+    /* About me */
+    .about-me-content {
+        padding: 100px 0 0 45px;
+    }
+
+
+
+    /* Contacts */
+    #contact .title-content {
+        padding-top: 0;
+    }
+    #contact form {
+        width: 580px;
+        padding: 265px 0 0 45px;
+    }
+}
+
+
+/* For landscape layouts only (iPad mini landscape) */
+@media only screen and (min-width: 770px) and (max-width: 1024px) and (orientation:landscape) {
+    #nav-menu {
+        /*display: none;*/
+        right: 20px;
+    }
+
+    #home h4 {
+        /*display: none;*/
+        right: 10px;
+        bottom: 10px;
+    }
+
+    #left-menu li {
+        margin-top: 10px;
+    }
+    #left-menu ul {
+        padding: 80px 0 0 0;
+    }
+
+    .corner-title {
+        width: 35%;
+        height: 120px;
+    }
+
+
+
+
+    /* Home */
+
+    .logo{
+        padding-top: 38px;
+    }
+
+
+
+    /* Portfolio */
+    .prt-back-next {
+        margin-top: 28px;
+    }
+    .prt-menu h1 {
+        font: 30px Raleway-Bold;
+    }
+
+
+    /* Gallery Post */
+    .right-side h1 {
+        padding: 45px 82px 24px 44px;
+    }
+    .right-side p {
+        padding: 0 82px 12px 44px;
+    }
+    .post-img {
+        padding: 0px 82px 0px 44px;
+    }
+
+
+
+
+    /*  Services */
+    .serv-content {
+        padding: 195px 0 35px 35px;
+    }
+
+    /* Contacts */
+    #contact .corner-title {
+        height: 250px;
+        width: 290px;
+    }
+    .about-me-content {
+        padding: 75px 0 0 100px;
+    }
+    #contact form {
+        padding: 95px 3px 0 80px;
+        width: 550px;
+    }
+
+
+
+    /* Contact */
+    #contact .corner-title {
+        width: 250px;
+    }
+    #contact .corner-title h1 {
+        padding: 40px 20px 5px 0;
+    }
+    .corner-title .title-content {
+        padding: 0 10px 32px 0;
+    }
+    #contact form {
+        padding: 85px 3px 0 15px;
+        width: 500px;
+    }
+}
