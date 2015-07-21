@@ -1,6 +1,7 @@
 body, section, h1, h2, h3 {
 	padding: 0;
 	margin: 0;
+  font-family: Helvetica, serif;
 }
 
 .container {
@@ -19,6 +20,7 @@ section.module p {
   margin-bottom: 40px;
   font-size: 16px;
   font-weight: 300;
+  line-height: 26px;
 }
 
 section.module p:last-child { margin-bottom: 0; }
@@ -30,7 +32,7 @@ section.module.parallax {
   height: 600px;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; /* fix background */
   background-size: cover;
 }
 /* end Target styles */
