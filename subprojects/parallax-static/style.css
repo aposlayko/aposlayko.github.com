@@ -72,3 +72,8 @@ section.module.parallax h1 { font-size: 96px; }
 
 section.module.parallax h1 { font-size: 160px; }
 }
+
+/* перекрыте стилей */
+#mCSB_1_container {
+  margin-right: 0;
+}
