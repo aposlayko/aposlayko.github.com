@@ -2,17 +2,19 @@
 <html>
 <head>
   <title>Fudi</title>
+  <link rel="stylesheet" href="../../libs/reset.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+ 
   <section class="sec-1">
     <div class="container">
       <div class="nav-menu">
-        <div class="logo"></div>
+        <div class="logo"></div>        
         <ul>
-          <li>log in</li>
-          <li>sign up</li>
-          <li></li>
+          <li class="menu-pic"></li>
+          <li><a href="#">sign up</a></li>
+          <li><a href="#">log in</a></li>
         </ul>
       </div>
       
@@ -20,43 +22,46 @@
         <h3>Find your Favorite</h3>
         <h1>RECIPES</h1>
         <button>GET STARTED</button>
-        <h4>OR SEND US YOUR OWN RECIPES AND GET REWARDED!</h4>
+        <h4>OR SEND US YOUR OWN RECIPES AND <span>GET REWARDED!</span></h4>
       </div>
     </div>
   </section>
   
   <section class="sec-2">
     <div class="container">
-      <div class="elems">
+       <div class="items">
         <div class="item">
-          <img src="" alt="">
+          <img src="img/get-inspired.png" alt="">
           <h3>GET INSPIRED</h3>
           <div class="underline"></div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisc 
 Pellentesque vel enim a elit viverra elementuma.
  Aliquam erat volutpat. </p>
-        </div>
-        <div class="item">
-          <img src="" alt="">
+        </div><div class="item">
+          <img src="img/get-rewarded.png" alt="">
           <h3>GET REWARDED</h3>
           <div class="underline"></div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisc 
 Pellentesque vel enim a elit viverra elementuma.
  Aliquam erat volutpat. </p>
-        </div>
-        <div class="item">
-          <img src="" alt="">
+        </div><div class="item">
+          <img src="img/get-social.png" alt="">
           <h3>GET SOCIAL</h3>
           <div class="underline"></div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisc 
 Pellentesque vel enim a elit viverra elementuma.
  Aliquam erat volutpat. </p>
         </div>
-      </div>
-      
+      </div>  
+    </section>  
+         
+    <section class="sec-into">
+     <div class="container">
       <div class="introducing">
-        <img src="" alt="">
-        <div class="article">
+        <div class="half phone">
+            <img src="img/iPhone5s.png" alt="">
+        </div>
+        <div class="half article">
           <h3>INTRODUCING THE FUDI APP</h3>
           <div class="underline"></div>
           <p>Morbi eget posuere dolor. Pellentesque cursus aliquet aliquet. Aeneanet 
@@ -73,7 +78,7 @@ ante, a mattis massa. </p>
           <div class="store-icon google"></div>
         </div>
       </div>
-    </div>
+    </div>    
   </section>
   
   <section class="sec-3">
@@ -81,8 +86,8 @@ ante, a mattis massa. </p>
       <div class="slider">
       
        <div class="slides">
-         <div class="slide">
-          <img src="" alt="">
+         <div class="slide active">
+          <img src="img/face.png" alt="">
           <h1>“I am so happy because I found this recipe, and it just made my life easier.
 Thanks  so much for sharing!”</h1>
           <h3>- Michael Dawson, San Francisco, CA -</h3>
@@ -99,7 +104,11 @@ Thanks  so much for sharing!”</h1>
         </div>
        </div>
        
-       <div class="slider-nav"></div>
+       <ul class="slider-nav">
+           <li class="chosen"></li>
+           <li></li>
+           <li></li>
+       </ul>
         
       </div>
     </div>
@@ -113,44 +122,35 @@ Thanks  so much for sharing!”</h1>
   </section>
   
   <section class="sec-5">
-    <div class="meal">
-      <div class="food">
+    <div class="meal clearfix">
+      <div class="food f1">
         <h3>327 Recipes</h3>
         <h1>ITALIAN</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f2">
         <h3>856 Recipes</h3>
         <h1>INDIAN</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f3">
         <h3>27 Recipes</h3>
         <h1>FRENCH</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f4">
         <h3>174 Recipes</h3>
         <h1>STEAKHOUSE</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f5">
         <h3>731 Recipes</h3>
         <h1>SEAFOOD</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f6">
         <h3>237 Recipes</h3>
         <h1>SUSHI</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f7">
         <h3>529 Recipes</h3>
         <h1>MEXICAN</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f8">
         <h3>145 Recipes</h3>
         <h1>CHINESE</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f9">
         <h3>327 Recipes</h3>
         <h1>PIZZA</h1>
-      </div>
-      <div class="food">
+      </div><div class="food f10">
         <h3>1.437 Recipes</h3>
         <h1>AMERICAN</h1>
       </div>
@@ -159,35 +159,32 @@ Thanks  so much for sharing!”</h1>
   
   <section class="sec-6">
     <div class="container">
-     
-      <div class="dights">
-        <div class="dight">
-          <h2>23,567</h2>
-          <h4>Recipes Available</h4>
+        <div class="dights clearfix"><div class="dight">
+                <h2>23,567</h2>
+                <h4>Recipes Available</h4>
+            </div><div class="dight">
+                <h2>431,729</h2>
+                <h4>Active Users</h4>
+            </div><div class="dight">
+                <h2>892,173</h2>
+                <h4>Positive Reviews </h4>
+            </div><div class="dight">
+                <h2>56,581</h2>
+                <h4>Photos & Videos</h4>
+            </div><div class="dight">
+                <h2>3,182</h2>
+                <h4>Spices and Herbs </h4>
+            </div>
         </div>
-        <div class="dight">
-          <h2>431,729</h2>
-          <h4>Active Users</h4>
-        </div>
-        <div class="dight">
-          <h2>892,173</h2>
-          <h4>Positive Reviews </h4>
-        </div>
-        <div class="dight">
-          <h2>56,581</h2>
-          <h4>Photos & Videos</h4>
-        </div>
-        <div class="dight">
-          <h2>3,182</h2>
-          <h4>Spices and Herbs </h4>
-        </div>
-      </div>
-      
-      <footer>
-        <div class="copyright">©2014 Fudi. All Rights Reserved.</div>
-        <div class="design-by">DESIGN BY: <i>WWW.BEKADES.COM</i></div>
-      </footer>
     </div>
-  </section>
+</section>
+
+<footer>
+   <div class="container">
+    <div class="copyright">©2014 Fudi. All Rights Reserved.</div><div class="design-by">DESIGN BY: <i>WWW.BEKADES.COM</i>
+    </div>
+   </div>
+</footer>
+
 </body>
 </html>

@@ -1,4 +1,339 @@
+@font-face {
+    font-family: LBolt;
+    src: url('fonts/Lato-Bol.ttf');
+   }
+@font-face {
+    font-family: LBolI;
+    src: url('fonts/Lato-BolIta.ttf');
+   }
+@font-face {
+    font-family: LBlack;
+    src: url('fonts/Lato-Bla.ttf');
+   }
+@font-face {
+    font-family: LBlackI;
+    src: url('fonts/Lato-BlaIta.ttf');
+   }
+@font-face {
+    font-family: LHai;
+    src: url('fonts/Lato-Hai.ttf');
+   }
+@font-face {
+    font-family: LHaiI;
+    src: url('fonts/Lato-HaiIta.ttf');
+   }
+@font-face {
+    font-family: LReg;
+    src: url('fonts/Lato-Reg.ttf');
+   }
+@font-face {
+    font-family: LLigh;
+    src: url('fonts/Lato-Lig.ttf');
+   }
+
 html, body {
   margin: 0;
   padding: 0;
 }
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+}
+.underline {    
+    border-top: 1px solid #f57365;
+    width: 88px;
+}
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+
+.sec-1 {
+    height: 880px;
+    background: url('img/main-image.jpg') 50% 50% no-repeat;
+    color: #fff;
+}
+
+.logo {
+    display: inline-block;
+    background: url('img/logo.png') 0 100% no-repeat;
+    width: 80px;
+    height: 70px;
+    padding-top: 20px;
+    cursor: pointer;
+}
+.sec-1 a { color: white; }
+.sec-1 ul { 
+    display: inline-block; 
+    float: right;
+    width: 50%;
+    padding-top: 45px;
+    text-transform: uppercase;
+}
+.sec-1 li {
+    list-style: none;
+    display: inline;    
+    padding-right: 25px; 
+    font: 25px LBolt;
+    float: right;
+}
+.menu-pic {
+    height: 30px;
+    background: url('img/menu.png') 50% 65% no-repeat; 
+    cursor: pointer;
+}
+
+.center-wrap {
+    margin: 250px auto;
+    text-align: center;
+}
+.center-wrap h3 {
+    font-family: "Times New Roman";
+    font-size: 36px;
+    font-weight: bold;
+    font-style: italic;
+}
+.center-wrap h1 {
+    font: 100px LReg;
+}
+.center-wrap button {
+    box-sizing: border-box;
+    width: 280px;
+    height: 68px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    background: none;
+    color: #fff;
+    font: 18px LReg;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.center-wrap button:hover {
+    background-color: rgba(255,255,255,0.3);
+    transition: 0.3s;
+}
+.center-wrap h4 {
+    font-family: LReg;
+    font-size: 14px;   
+    margin-top: 35px;
+}
+.center-wrap h4 span {
+    font-family: LBolt;
+    text-decoration: underline;
+}
+.half {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+
+
+.items {
+    height: 435px;
+}
+.sec-2 .item img {
+    padding-top: 100px;
+}
+.sec-2 .item {
+    display: inline-block;
+    width: 33.3333%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.sec-2 .items :last-child {
+    padding-right: 0;
+}
+.sec-2 .items :first-child {
+    padding-left: 0;
+}
+.sec-2 .item h3 {
+    font: 18px LBolt;
+    padding: 15px 0 10px 0;
+}
+.sec-2 .item .underline {
+    margin: 0 auto;
+}
+.sec-2 .item p {
+    font: 16px LLigh;
+    padding-top: 15px;    
+}
+
+.sec-into {    
+    background: #f7f7f7;
+}
+.introducing {
+    height: 880px;
+}
+.phone {
+    height: 100%;
+    position: relative;
+}
+.phone img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 100%;
+}
+.article {
+    padding-left: 8%;
+    box-sizing: border-box;
+}
+.article h3 {
+    font: 18px LBlack;
+    padding-top: 180px;
+}
+.article .underline {
+    margin-top: 5px;
+}
+.article p {
+    margin-top: 25px;
+    font: 16px LLigh;
+}
+.store-icon {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 27px;
+}
+.apple {
+    background: url(img/appStore.png) no-repeat;
+    width: 112px;
+    height: 39px;
+}
+.google {
+    background: url(img/gplay.png) no-repeat;
+    width: 120px;
+    height: 39px;
+}
+
+.sec-3 {
+    background: url(img/Layer-17.jpg) 50% 0;
+}
+.slider {
+    height: 460px;
+    max-width: 940px;
+    margin: 0 auto;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+}
+.slide {
+    display: none;
+    padding-top: 75px;
+}
+.slide.active {
+    display: block;
+}
+.slide h1 {
+    padding-top: 10px;
+    font: 30px LHai;
+}
+.slide h3 {
+    padding-top: 15px;
+    font: 18px LHaiI;
+}
+.slider-nav {
+    list-style: none;
+}
+.slider-nav {
+    padding-top: 35px;
+}
+.slider-nav li {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    background: #fff;
+    border-radius: 5px;
+    margin-right: 6px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.slider-nav .chosen {
+    opacity: 1;
+}
+
+.sec-4 { text-align: center; }
+.sec-4 h1 {
+    padding-top: 90px;
+    font: 18px LBlack;
+}
+.sec-4 .underline {
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 40px;
+}
+
+.sec-5 .food {
+    display: inline-block;
+    width: 20%;
+    height: 220px;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+}
+.f1 { background: url(img/f1.jpg) center; }
+.f2 { background: url(img/f2.jpg) center; }
+.f3 { background: url(img/f3.jpg) center; }
+.f4 { background: url(img/f4.jpg) center; }
+.f5 { background: url(img/f5.jpg) center; }
+.f6 { background: url(img/f6.jpg) center; }
+.f7 { background: url(img/f7.jpg) center; }
+.f8 { background: url(img/f8.jpg) center; }
+.f9 { background: url(img/f9.jpg) center; }
+.f10 { background: url(img/f10.jpg) center; }
+.food h3 {
+    font: 15px "Times New Roman";
+    font-style: italic;
+    padding-top: 70px;
+}
+.food h1 {
+    font: 36px LBolt;
+}
+
+
+.sec-6 .dights {
+    
+}
+.dight {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+}
+.dight h2 {
+    font: 36px LBolt;
+    padding-top: 45px;
+}
+.dight h4 {
+    font: 16px LLigh;
+    padding-bottom: 55px;
+}
+footer {
+    background: #f7f7f7;
+    border-top: 1px solid #e2e2e2;
+}
+.copyright {
+    display: inline-block;
+    width: 50%;
+    font: 16px LLigh;
+    color: #8b8b8b;
+    padding: 40px 0;
+}
+.design-by {
+    display: inline-block;
+    width: 50%;
+    font: 14px LLigh;
+    text-align: right;
+}
+.design-by i {
+    font: 14px LReg;
+}
+    
+    
