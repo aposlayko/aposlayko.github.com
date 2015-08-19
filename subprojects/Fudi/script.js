@@ -3,7 +3,7 @@ $(function() {
 	$('.phone').hide();
 	$('.article').hide();
 	$('.slider').hide();
-	$('.food').hide();
+	$('.food-wrap').hide();
 
 	function disableWaypoint (waypoint) {
 		setTimeout(function () { waypoint.disable(); }, 500);
@@ -119,7 +119,7 @@ $(function() {
 	  element: document.getElementById('s-5'),
 	  offset: '90%',
 	  handler: function(direction) {
-	  	var food = $(this.element).find('.food'),
+	  	var food = $(this.element).find('.food-wrap'),
 	  		time = 300;
 	    if (direction === 'down') {
 	    	food.each(function (index, item) {
@@ -141,12 +141,30 @@ $(function() {
 	  element: document.getElementById('s-6'),
 	  offset: '95%',
 	  handler: function(direction) {
+	  	var dights = $('.dights').find('h2'),
+	  		endDights = [23567, 431729, 892173, 56581, 3182],
+	  		counters = [],
+	  		time = 300;
+
 	    if (direction === 'down') {
 	    	console.log('s-6 down');
-	    } else {
-	    	console.log('s-6 up');
-	    } 
-	  }
-	});
+	    	dights.each(function (index, item) {
+	    		time += 300;
+	    		setTimeout(function () {
+	    			counters[index] = new CountUp('dig-'+index, 0, endDights[index], 0, 2, {
+	    				useEasing : true, 
+						useGrouping : true, 
+						separator : ',', 
+						decimal : '.', 
+						prefix : '', 
+						suffix : '' 
+	    			});
 
+					counters[index].start();
+	    		}, time);
+	    	});
+
+	    }
+	  }
+	});	
 });
