@@ -163,7 +163,7 @@ $(function() {
 					counters[index].start();
 	    		}, time);
 	    	});
-
+            disableWaypoint(this);
 	    }
 	  }
 	});	
