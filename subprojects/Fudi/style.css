@@ -68,6 +68,7 @@ a {
     height: 70px;
     padding-top: 20px;
     cursor: pointer;
+    float: left;
 }
 .sec-1 a { color: white; }
 .sec-1 ul { 
@@ -203,6 +204,7 @@ a {
     display: inline-block;
     margin-right: 10px;
     margin-top: 27px;
+    cursor: pointer;
 }
 .apple {
     background: url(img/appStore.png) no-repeat;
@@ -272,14 +274,14 @@ a {
 .sec-5 .food {
     display: inline-block;
     width: 20%;
-    height: 220px;
-    background-size: cover;
+    height: 220px;    
     color: #fff;
     text-align: center;
 }
 .food .food-wrap {
     width: 100%;
     height: 100%;
+    background-size: cover;
 }
 .f1 { background: url(img/f1.jpg) center; }
 .f2 { background: url(img/f2.jpg) center; }
@@ -352,7 +354,7 @@ footer {
         font-size: 2rem;
     }
 }
-@media (min-width: 544px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .sec-2 .items {
         height: 480px;
     }
@@ -400,14 +402,60 @@ footer {
     }
 }
 @media (max-width: 543px) {
+    .sec-1 {height: 600px;}
     .sec-1 ul {
         display: none;
     }
+    .sec-1 .logo {
+        display: block;
+        margin: 0 auto;
+    }
+    .sec-1 .center-wrap {
+        margin: 70px auto;
+    }
+    .sec-1 .center-wrap h3 {
+        font-size: 1.7rem;
+    }
+    .sec-1 .center-wrap h1 {
+        font: 4rem LReg;
+    }
+    .sec-1 .center-wrap button {
+        max-width: 100%;
+    }
+
+    .sec-2 .items {
+        height: inherit;
+    }
+    .sec-2 .item {
+        width: inherit;
+    }
+    .sec-2 .item img {
+        padding-top: 40px;
+    }
+    .slider {
+        height: inherit;
+        padding-bottom: 30px;
+    }
+    .slider .slide {
+        padding-top: 30px;        
+    }
+    .slide h1 {
+        padding: 10px 10px 0 10px;
+    }
+    .sec-5 .food {
+        width: 100%;
+    }
 }
+
+
+
+
+
 
 
 @media (min-width: 768px) and (max-width: 850px) {
     .sec-into .introducing {
         height: 670px;
     }
+
 }
