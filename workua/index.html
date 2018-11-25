@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Work.ua</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<style>
+		html, body {
+    		height: 100%;
+    		font-family: 'Roboto', sans-serif;
+		}
+		body {
+			position: relative;
+		    margin: 0;
+		}
+		article {
+			position: absolute;
+			width: 100%;
+			height: 250px;
+  			top: 45%;
+  			transform: translateY(-50%);
+			text-align: center;
+		}
+		.root-link {
+			display: inline-block;
+			height: 62px;
+			width: 200px;
+		}
+		.logo {
+			width: 200px;
+			margin-bottom: 50px;
+
+		}
+		input {			
+			position: relative;
+		    width: 340px;
+		    line-height: 20px;
+		    font-size: 17px;
+		    font-weight: 600;
+		    padding: 5px 30px;
+		    border: none;
+		    border-bottom: 1px solid #00A3F8;
+		    color: #fb0068;
+		    outline: none;
+		    text-align: center;
+		}
+
+		.wrap-input {
+			position: relative;
+		}
+
+		.search {
+			display: none;
+			position: absolute;
+			right: 5px;
+    		bottom: -3px;
+			width: 20px;
+			height: 20px;
+			background: url(./search.svg) no-repeat;
+			cursor: pointer;
+			z-index: 1;
+		}
+		.search.has-text {
+			display: inline-block;
+		}
+
+		footer {
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+			margin-bottom: 50px;
+			text-align: center;
+
+		}
+		footer a {
+			font-size: 11px;
+			color: #00A3F8;
+			margin: 0 30px;
+			text-decoration: none;
+		}
+		.enter-link {}
+		.summary-link {}
+		.employer-link {}
+	</style>
+</head>
+<body>
+	<article>
+		<a class="root-link" href="https://work.ua">
+			<img class="logo" src="logo.png" alt="work.ua logo">	
+		</a><br>
+		<span class="wrap-input">
+			<input id="main-input" type="text" autofocus>
+			<span class="search" id="search"></span>
+		</span>		
+	</article>
+	<footer>
+		<a class="enter-link" href="https://www.work.ua/jobseeker/login/">Войти</a>
+		<a class="summary-link" href="https://www.work.ua/jobseeker/my/resumes/create/">Разместить резюме</a>
+		<a class="employer-link" href="https://www.work.ua/employer/">Работодателю</a>
+	</footer>
+	<script>
+		(function() {
+			const inputEl = document.getElementById('main-input');
+			const searchEl = document.getElementById('search');			
+			const serchClass = 'has-text';
+			const enterKeyCode = 13;
+
+			let hasText = false;
+
+			inputEl.addEventListener('keyup', searchIconUpdate);
+			searchEl.addEventListener('click', submit);
+			inputEl.addEventListener('keyup', (e) => {
+				if (e.keyCode === enterKeyCode) {
+					submit();
+				}
+			});
+
+			function searchIconUpdate (e) {
+				const value = e.target.value;
+				if (hasText !== !!value) {
+					hasText = !!value;
+					hasText ? searchEl.classList.add(serchClass) : searchEl.classList.remove(serchClass);
+				}
+			}
+
+			function submit() {
+				const value = inputEl.value;
+				if (value) {
+					const win = window.open(encodeURI('https://www.work.ua/jobs-' + value));
+  					win.focus();
+				}				
+			}
+		})();
+	</script>
+</body>
+</html>
